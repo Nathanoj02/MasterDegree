@@ -1,4 +1,4 @@
-from data_structures import Node
+from .data_structures import Node
 from cv2 import typing
 import math
 

@@ -1,12 +1,12 @@
-from data_structures import Node
-from draw import draw, draw_solution_path, is_window_open, WINDOW_NAME
-from uninformed_search import BFS, DFS, UCS, DLS, IDS
+from lib.data_structures import Node
+from lib.draw import draw, draw_solution_path, is_window_open, WINDOW_NAME
+from lib.uninformed_search import BFS, DFS, UCS, DLS, IDS
 
 import cv2
 import numpy as np
 
-def test_priority_queue() :
-    from data_structures import PriorityQueue, QueueOrder
+def test_priority_queue () :
+    from lib.data_structures import PriorityQueue, QueueOrder
     import random
 
     p = PriorityQueue(QueueOrder.ASC)
@@ -26,7 +26,7 @@ def test_priority_queue() :
     print('Pop : ' + str(q.pop()))
 
 
-def set_data_verona() :
+def set_data_verona () :
     data = []
     data_dict = {}
 
@@ -86,7 +86,7 @@ def search_algorithm_selection () :
     return IDS
 
 
-if __name__ == '__main__' :
+def search_algorithms_main () :
     data, data_dict = set_data_verona()
 
     draw(data)
@@ -106,4 +106,7 @@ if __name__ == '__main__' :
         if key == ord('q'):
             break
 
-    
+
+if __name__ == '__main__' :
+    search_algorithms_main()
+
