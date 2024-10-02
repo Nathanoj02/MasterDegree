@@ -1,5 +1,4 @@
 To Do list:
-    - Add test for coords_to_distance
     - Implement Biderectional Search
-    - Implement Greedy & A*
     - Add choice on which algorithm to execute
+    - Print Frontier and Explored Nodes

@@ -1,6 +1,7 @@
 from lib.data_structures import Node
 from lib.draw import draw, draw_solution_path, is_window_open, WINDOW_NAME
 from lib.uninformed_search import BFS, DFS, UCS, DLS, IDS
+from lib.informed_search import calculate_euristic_cost, GBFS, A_star
 
 import cv2
 import numpy as np
@@ -24,6 +25,24 @@ def test_priority_queue () :
     print('\nDescending queue:')
     print(q)
     print('Pop : ' + str(q.pop()))
+
+
+def test_coords_to_distance () :
+    from lib.search_common import coords_to_distance
+
+    data_dict = {}
+
+    data_dict['povegliano'] = Node('Povegliano', (45.342297, 10.873024))
+    data_dict['borgo_roma'] = Node('Borgo Roma', (45.403335, 10.997704))
+    data_dict['nogarole'] = Node('Nogarole', (45.292449, 10.884405))
+    data_dict['bagnolo'] = Node('Bagnolo', (45.259508, 10.913514))
+    data_dict['verona'] = Node('Verona', (45.439146, 10.991763))
+
+    for node in data_dict.values() :
+        for goal_node in data_dict.values() :
+            print(f'{node} - {goal_node} : {coords_to_distance(node.coords, goal_node.coords)} Km')
+        print()
+
 
 
 def set_data_verona () :
@@ -83,7 +102,7 @@ def set_data_verona () :
 
 
 def search_algorithm_selection () :
-    return IDS
+    return A_star
 
 
 def search_algorithms_main () :
@@ -93,7 +112,12 @@ def search_algorithms_main () :
 
     algorithm = search_algorithm_selection()
 
-    res_path = algorithm(data_dict['bagnolo'], data_dict['verona'])
+    goal = data_dict['verona']
+
+    for node in data_dict.values() :
+        calculate_euristic_cost(node, goal)
+
+    res_path = algorithm(data_dict['vigasio'], goal)
 
     print(res_path)
 
@@ -108,5 +132,6 @@ def search_algorithms_main () :
 
 
 if __name__ == '__main__' :
-    search_algorithms_main()
+    # search_algorithms_main()
+    test_coords_to_distance()
 
