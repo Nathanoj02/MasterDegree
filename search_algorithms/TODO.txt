@@ -1,3 +1,0 @@
-To Do list:
-    - Implement Biderectional Search
-    - Add choice on which algorithm to execute

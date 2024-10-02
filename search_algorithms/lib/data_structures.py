@@ -10,7 +10,6 @@ class Node :
         self.normalized_coords = (0, 0)
         self.links = []
         self.path_cost = 0 # Changing in-real-time
-        self.euristic_cost_to_goal = -1
 
     def set_normalized_coords (self, normalized_coords : typing.Point2i) :
         self.normalized_coords = normalized_coords
@@ -18,6 +17,9 @@ class Node :
     def add_link (self, node : 'Node', cost : int) :
         self.links.append((node, cost))
         node.links.append((self, cost))
+
+    def set_euristics (self, euristic_cost_to_goal) :
+        self.euristic_cost_to_goal = euristic_cost_to_goal
 
     def __repr__(self) -> str:
         return self.name

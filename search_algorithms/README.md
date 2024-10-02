@@ -10,7 +10,8 @@ Implemented also a graphical visualization of the Nodes and the Solution path wi
 - IDS
 
 ## Informed Search Algorithms
-
+- GBFS
+- A*
 
 ## Execution
 [Optional] Create and activate a virtual environment, for example:

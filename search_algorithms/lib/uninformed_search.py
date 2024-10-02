@@ -17,12 +17,12 @@ def _BFS (start : Node, goal : Node) -> dict[Node, Node] :
     
     frontier = [start]  # FIFO queue (normal queue)
     explored = set()    # explored nodes
+    explored_list = []  # Only for printing states
 
     while frontier :
         current_node = frontier.pop(0)
         explored.add(current_node)
-
-        print(f'Current State: {current_node}')
+        explored_list.append(current_node)
 
         for link in current_node.links :
             child = link[0]
@@ -31,11 +31,10 @@ def _BFS (start : Node, goal : Node) -> dict[Node, Node] :
                 prev[child] = current_node
                 
                 if child == goal :
+                    print(f'Explored States: {explored_list}')
                     return prev
                 
                 frontier.append(child)
-        
-        print(f'\tFrontier: {[node.name for node in frontier]}', end='\n\n')
 
     return None
 
@@ -57,13 +56,14 @@ def _UCS (start : Node, goal : Node) -> dict[Node, Node] :
     frontier = PriorityQueue(QueueOrder.ASC)  # priority queue
     frontier.enqueue(start, 0)
     explored = set()    # explored nodes
+    explored_list = []  # Only for printing states
 
     while frontier :
         current_node = frontier.pop()
-
-        print(f'Current State: {current_node}')
+        explored_list.append(current_node)
 
         if current_node == goal :
+            print(f'Explored States: {explored_list}')
             return prev
         
         explored.add(current_node)
@@ -82,8 +82,6 @@ def _UCS (start : Node, goal : Node) -> dict[Node, Node] :
                 if prev_cost > child.path_cost :
                     frontier.replace(child, child.path_cost)
                     prev[child] = current_node
-        
-        print(f'\tFrontier: {[node.name for node in frontier]}', end='\n\n')
 
     return None
 
@@ -104,12 +102,12 @@ def _DFS (start : Node, goal : Node) -> dict[Node, Node] :
     
     frontier = [start]  # LIFO queue (stack)
     explored = set()    # explored nodes
+    explored_list = []  # Only for printing states
 
     while frontier :
         current_node = frontier.pop()
         explored.add(current_node)
-
-        print(f'Current State: {current_node}')
+        explored_list.append(current_node)
 
         for link in current_node.links :
             child = link[0]
@@ -118,11 +116,10 @@ def _DFS (start : Node, goal : Node) -> dict[Node, Node] :
                 prev[child] = current_node
 
                 if child == goal :
+                    print(f'Explored States: {explored_list}')
                     return prev
             
                 frontier.append(child)
-
-        print(f'\tFrontier: {[node.name for node in frontier]}', end='\n\n')
 
     return None
 
@@ -144,11 +141,11 @@ def _DLS (start : Node, goal : Node, depth_limit : int) -> dict[Node, Node] :
     start.path_cost = 0
     frontier = [start]  # LIFO queue (stack)
     explored = set()    # explored nodes
+    explored_list = []  # Only for printing states
 
     while frontier :
         current_node = frontier.pop()
-
-        print(f'Current State: {current_node}')
+        explored_list.append(current_node)
 
         if current_node.path_cost >= depth_limit :
             continue
@@ -162,12 +159,11 @@ def _DLS (start : Node, goal : Node, depth_limit : int) -> dict[Node, Node] :
                 prev[child] = current_node
 
                 if child == goal :
+                    print(f'Explored States: {explored_list}')
                     return prev
             
                 child.path_cost = current_node.path_cost + 1
                 frontier.append(child)
-
-        print(f'\tFrontier: {[node.name for node in frontier]}', end='\n\n')
 
     return None
 

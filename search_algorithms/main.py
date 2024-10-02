@@ -101,36 +101,88 @@ def set_data_verona () :
 
 
 def search_algorithm_selection () :
-    return A_star
+    algorithms = [BFS, UCS, DFS, DLS, IDS, GBFS, A_star]
+
+    print('Select one of the following algorithms:')
+    for i, al in enumerate(algorithms):
+        print(f'\t{i + 1}. {al.__name__}')
+    print()
+
+    a = 0
+    while not 1 <= a <= len(algorithms) :
+        a = int(input('Choose an option: '))
+    
+    return algorithms[a - 1]
+
+
+def states_selection (data_dict : dict[str, Node]) -> tuple[Node, Node] :
+    print('Available states:')
+    for name in data_dict:
+        print(name.capitalize())
+    print()
+
+    start_state = ''
+    while start_state not in data_dict :
+        start_state = input('Choose a starting state: ').lower()
+    
+    goal_state = ''
+    while goal_state not in data_dict :
+        goal_state = input('Choose a goal state: ').lower()
+    
+    return data_dict[start_state], data_dict[goal_state]
 
 
 def search_algorithms_main () :
+    # Get graph with connections
     data, data_dict = set_data_verona()
 
+    # Draw a first map
     draw(data)
 
+    print('Click on the map and press any key to continue...', end='\n\n')
+    cv2.waitKey()
+
+    # Ask start and goal states
+    start, goal = states_selection(data_dict)
+    print()
+    
+    # Ask which algorithms to use
     algorithm = search_algorithm_selection()
+    print()
 
-    goal = data_dict['verona']
+    res_path = None
 
-    for node in data_dict.values() :
-        calculate_euristic_cost(node, goal)
+    # Calculate euristic costs if it's an informed search algorithm
+    if algorithm == GBFS or algorithm == A_star :
+        for node in data_dict.values() :
+            calculate_euristic_cost(node, goal)
 
-    res_path = algorithm(data_dict['bagnolo'], goal)
+    # DLS requires an extra parameter
+    if algorithm == DLS :
+        max_depth = int(input('Insert max depth: '))
+        res_path = DLS(start, goal, depth_limit = max_depth)
+    else :
+        res_path = algorithm(start, goal)
 
-    print(f'\nSolution path = {res_path}')
+    if res_path is not None :
+        print(f'\nSolution path = {res_path}')
+        
+        draw_solution_path(res_path)
+    else :
+        print(f'\nNo path found from {start} to {goal}')
 
-    draw_solution_path(res_path)
+    print('\nClick on the map and press Q to terminate...')
     
     # Wait while window is opened or Q is pressed
     while is_window_open(WINDOW_NAME) :
         key = cv2.waitKey()
 
-        if key == ord('q'):
+        if key == ord('q') or key == ord('Q'):
             break
 
 
 if __name__ == '__main__' :
     search_algorithms_main()
     # test_coords_to_distance()
+    # test_priority_queue
 

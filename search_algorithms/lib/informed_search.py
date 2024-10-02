@@ -2,13 +2,13 @@ from .data_structures import Node, PriorityQueue, QueueOrder
 from .search_common import reconstruct_path, coords_to_distance
 
 def calculate_euristic_cost (node : Node, goal : Node) :
-    node.euristic_cost_to_goal = coords_to_distance(node.coords, goal.coords)
+    node.set_euristics(coords_to_distance(node.coords, goal.coords))
 
 
 # ------------------------------------------ GBFS -------------------------------------------
 
 def GBFS (start : Node, goal : Node) -> list[Node] :
-    assert start.euristic_cost_to_goal != -1, 'No euristic cost was calculated before executing an informed search'
+    assert hasattr(start, 'euristic_cost_to_goal'), 'No euristic cost was calculated before executing an informed search'
 
     prev = _GBFS(start, goal)
 
@@ -24,13 +24,14 @@ def _GBFS (start : Node, goal : Node) -> dict[Node, Node] :
     frontier = PriorityQueue(QueueOrder.ASC)  # priority queue
     frontier.enqueue(start, start.euristic_cost_to_goal)
     explored = set()    # explored nodes
+    explored_list = []  # Only for printing states
 
     while frontier :
         current_node = frontier.pop()
-
-        print(f'Current State: {current_node}')
+        explored_list.append(current_node)
 
         if current_node == goal :
+            print(f'Explored States: {explored_list}')
             return prev
         
         explored.add(current_node)
@@ -48,8 +49,6 @@ def _GBFS (start : Node, goal : Node) -> dict[Node, Node] :
                 if prev_cost > child.euristic_cost_to_goal :
                     frontier.replace(child, child.euristic_cost_to_goal)
                     prev[child] = current_node
-        
-        print(f'\tFrontier: {[node.name for node in frontier]}', end='\n\n')
 
     return None
 
@@ -57,7 +56,7 @@ def _GBFS (start : Node, goal : Node) -> dict[Node, Node] :
 # ------------------------------------------- A* --------------------------------------------
 
 def A_star (start : Node, goal : Node) -> list[Node] :
-    assert start.euristic_cost_to_goal != -1, 'No euristic cost was calculated before executing an informed search'
+    assert hasattr(start, 'euristic_cost_to_goal'), 'No euristic cost was calculated before executing an informed search'
 
     prev = _A_star(start, goal)
 
@@ -73,13 +72,14 @@ def _A_star (start : Node, goal : Node) -> dict[Node, Node] :
     frontier = PriorityQueue(QueueOrder.ASC)  # priority queue
     frontier.enqueue(start, start.euristic_cost_to_goal)
     explored = set()    # explored nodes
+    explored_list = []  # Only for printing states
 
     while frontier :
         current_node = frontier.pop()
-
-        print(f'Current State: {current_node}')
+        explored_list.append(current_node)
 
         if current_node == goal :
+            print(f'Explored States: {explored_list}')
             return prev
         
         explored.add(current_node)
@@ -99,7 +99,5 @@ def _A_star (start : Node, goal : Node) -> dict[Node, Node] :
                 if prev_cost > total_cost :
                     frontier.replace(child, total_cost)
                     prev[child] = current_node
-
-        print(f'\tFrontier: {[node.name for node in frontier]}', end='\n\n')
 
     return None
