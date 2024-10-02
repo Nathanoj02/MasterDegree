@@ -44,7 +44,6 @@ def test_coords_to_distance () :
         print()
 
 
-
 def set_data_verona () :
     data = []
     data_dict = {}
@@ -117,9 +116,9 @@ def search_algorithms_main () :
     for node in data_dict.values() :
         calculate_euristic_cost(node, goal)
 
-    res_path = algorithm(data_dict['vigasio'], goal)
+    res_path = algorithm(data_dict['bagnolo'], goal)
 
-    print(res_path)
+    print(f'\nSolution path = {res_path}')
 
     draw_solution_path(res_path)
     
@@ -132,6 +131,6 @@ def search_algorithms_main () :
 
 
 if __name__ == '__main__' :
-    # search_algorithms_main()
-    test_coords_to_distance()
+    search_algorithms_main()
+    # test_coords_to_distance()
 

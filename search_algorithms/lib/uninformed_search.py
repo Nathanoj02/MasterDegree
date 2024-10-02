@@ -22,6 +22,8 @@ def _BFS (start : Node, goal : Node) -> dict[Node, Node] :
         current_node = frontier.pop(0)
         explored.add(current_node)
 
+        print(f'Current State: {current_node}')
+
         for link in current_node.links :
             child = link[0]
 
@@ -32,6 +34,8 @@ def _BFS (start : Node, goal : Node) -> dict[Node, Node] :
                     return prev
                 
                 frontier.append(child)
+        
+        print(f'\tFrontier: {[node.name for node in frontier]}', end='\n\n')
 
     return None
 
@@ -57,6 +61,8 @@ def _UCS (start : Node, goal : Node) -> dict[Node, Node] :
     while frontier :
         current_node = frontier.pop()
 
+        print(f'Current State: {current_node}')
+
         if current_node == goal :
             return prev
         
@@ -76,6 +82,8 @@ def _UCS (start : Node, goal : Node) -> dict[Node, Node] :
                 if prev_cost > child.path_cost :
                     frontier.replace(child, child.path_cost)
                     prev[child] = current_node
+        
+        print(f'\tFrontier: {[node.name for node in frontier]}', end='\n\n')
 
     return None
 
@@ -101,6 +109,8 @@ def _DFS (start : Node, goal : Node) -> dict[Node, Node] :
         current_node = frontier.pop()
         explored.add(current_node)
 
+        print(f'Current State: {current_node}')
+
         for link in current_node.links :
             child = link[0]
 
@@ -111,6 +121,8 @@ def _DFS (start : Node, goal : Node) -> dict[Node, Node] :
                     return prev
             
                 frontier.append(child)
+
+        print(f'\tFrontier: {[node.name for node in frontier]}', end='\n\n')
 
     return None
 
@@ -136,6 +148,8 @@ def _DLS (start : Node, goal : Node, depth_limit : int) -> dict[Node, Node] :
     while frontier :
         current_node = frontier.pop()
 
+        print(f'Current State: {current_node}')
+
         if current_node.path_cost >= depth_limit :
             continue
 
@@ -152,6 +166,8 @@ def _DLS (start : Node, goal : Node, depth_limit : int) -> dict[Node, Node] :
             
                 child.path_cost = current_node.path_cost + 1
                 frontier.append(child)
+
+        print(f'\tFrontier: {[node.name for node in frontier]}', end='\n\n')
 
     return None
 

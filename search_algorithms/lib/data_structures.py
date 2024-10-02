@@ -80,3 +80,6 @@ class PriorityQueue :
     
     def __repr__(self) -> str:
         return ', '.join(str((el[0], el[1])) for el in self.queue)
+    
+    def __iter__(self) :
+        return (el[0] for el in self.queue)

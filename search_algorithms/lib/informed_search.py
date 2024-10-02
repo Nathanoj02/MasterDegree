@@ -28,6 +28,8 @@ def _GBFS (start : Node, goal : Node) -> dict[Node, Node] :
     while frontier :
         current_node = frontier.pop()
 
+        print(f'Current State: {current_node}')
+
         if current_node == goal :
             return prev
         
@@ -46,6 +48,8 @@ def _GBFS (start : Node, goal : Node) -> dict[Node, Node] :
                 if prev_cost > child.euristic_cost_to_goal :
                     frontier.replace(child, child.euristic_cost_to_goal)
                     prev[child] = current_node
+        
+        print(f'\tFrontier: {[node.name for node in frontier]}', end='\n\n')
 
     return None
 
@@ -73,6 +77,8 @@ def _A_star (start : Node, goal : Node) -> dict[Node, Node] :
     while frontier :
         current_node = frontier.pop()
 
+        print(f'Current State: {current_node}')
+
         if current_node == goal :
             return prev
         
@@ -93,5 +99,7 @@ def _A_star (start : Node, goal : Node) -> dict[Node, Node] :
                 if prev_cost > total_cost :
                     frontier.replace(child, total_cost)
                     prev[child] = current_node
+
+        print(f'\tFrontier: {[node.name for node in frontier]}', end='\n\n')
 
     return None
