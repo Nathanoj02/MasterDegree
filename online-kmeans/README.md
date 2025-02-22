@@ -1,6 +1,6 @@
 # Online k-means
-K-means algorithm with optimizations to perform it in-real-time.
-Made with CUDA and calibration phase.
+K-means algorithm with optimizations to perform it in-real-time \
+Made with CUDA and calibration phase \
 Project for Signals, Image &amp; Video, Master's Degree in Artificial Intelligence Systems
 
 ## Setup
