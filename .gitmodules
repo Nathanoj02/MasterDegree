@@ -1,0 +1,6 @@
+[submodule "deliveroo"]
+	path = deliveroo
+	url = git@github.com:bandomatteo/Deliveroo.git
+[submodule "deliveroo-agent"]
+	path = deliveroo-agent
+	url = https://github.com/bandomatteo/Deliveroo
