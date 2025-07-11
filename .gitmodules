@@ -4,3 +4,6 @@
 [submodule "deliveroo-agent"]
 	path = deliveroo-agent
 	url = https://github.com/bandomatteo/Deliveroo
+[submodule "NLU-unitn-2025"]
+	path = NLU-unitn-2025
+	url = https://github.com/Nathanoj02/NLU-unitn-2025
