@@ -7,3 +7,6 @@
 [submodule "NLU-unitn-2025"]
 	path = NLU-unitn-2025
 	url = https://github.com/Nathanoj02/NLU-unitn-2025
+[submodule "giraffe-robot"]
+	path = giraffe-robot
+	url = https://github.com/Nathanoj02/giraffe-robot
