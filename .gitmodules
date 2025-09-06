@@ -10,3 +10,6 @@
 [submodule "giraffe-robot"]
 	path = giraffe-robot
 	url = https://github.com/Nathanoj02/giraffe-robot
+[submodule "GPU-Computing-2025-256178"]
+	path = GPU-Computing-2025-256178
+	url = https://github.com/Nathanoj02/GPU-Computing-2025-256178
