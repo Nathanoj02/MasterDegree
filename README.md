@@ -11,6 +11,11 @@ Master's degree in Artificial Intelligence Systems (9/2024 - Current)
     - [gpu-computing](https://github.com/Nathanoj02/GPU-Computing-2025-256178): k-means algorithm on GPU with OpenACC. Project for GPU Computing course
     - [robotics](https://github.com/Nathanoj02/giraffe-robot): Giraffe robot (RRPRR) model and simulation for Q&A sessions. Project for Introduction to Robotics course
 
+- Second year
+    - distributed-robot-perception: to be defined. Project for Distributed Robot Perception course
+    - robot-control: to be defined. Project for Optimisation and Learning for Robot Control course
+    - robot-planning: to be defined. Project for Robot Planning and its application course
+
 ## How to download everything
 ```
 git clone git@github.com:Nathanoj02/MasterDegree.git
