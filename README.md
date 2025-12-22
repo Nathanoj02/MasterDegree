@@ -26,5 +26,5 @@ git submodule init
 
 If something was updated after the first clone:
 ```
-git submodule update
+git submodule update --recursive --remote
 ```
