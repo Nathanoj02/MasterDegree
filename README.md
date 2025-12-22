@@ -15,6 +15,7 @@ Master's degree in Artificial Intelligence Systems (9/2024 - Current)
     - distributed-robot-perception: to be defined. Project for Distributed Robot Perception course
     - robot-control: to be defined. Project for Optimisation and Learning for Robot Control course
     - robot-planning: to be defined. Project for Robot Planning and its application course
+    - [internship](https://github.com/Nathanoj02/internship-multi-gpu): Code for internship on multi-GPU algorithms
 
 ## How to download everything
 ```

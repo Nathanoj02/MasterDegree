@@ -17,3 +17,6 @@
 	path = GPU-Computing-2025-256178
 	url = https://github.com/Nathanoj02/GPU-Computing-2025-256178
 	branch = main
+[submodule "internship-multi-gpu"]
+	path = internship-multi-gpu
+	url = git@github.com:Nathanoj02/internship-multi-gpu.git
