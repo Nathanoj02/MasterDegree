@@ -20,6 +20,7 @@
 [submodule "internship-multi-gpu"]
 	path = internship-multi-gpu
 	url = git@github.com:Nathanoj02/internship-multi-gpu.git
+	branch = main
 [submodule "loco_nav"]
 	path = loco_nav
 	url = git@github.com:Nathanoj02/loco_nav.git
