@@ -24,3 +24,6 @@
 [submodule "loco_nav"]
 	path = loco_nav
 	url = git@github.com:Nathanoj02/loco_nav.git
+[submodule "source-seek"]
+	path = source-seek
+	url = git@github.com:Nathanoj02/source-seek.git

@@ -12,7 +12,7 @@ Master's degree in Artificial Intelligence Systems (9/2024 - Current)
     - [robotics](https://github.com/Nathanoj02/giraffe-robot): Giraffe robot (RRPRR) model and simulation for Q&A sessions. Project for Introduction to Robotics course
 
 - Second year
-    - distributed-robot-perception: to be defined. Project for Distributed Robot Perception course
+    - [source-seek](https://github.com/Nathanoj02/source-seek): Swarm of agents locating the source of a scalar field (gas leak), using distributed sensing and control. Project for Distributed Robot Perception course
     - [actor-critic-learning](./actor-critic-learning/): Actor-critic reinforcement learning for optimal control on classical mechanical systems. Project for Optimisation and Learning for Robot Control course
     - [loco_nav](https://github.com/Nathanoj02/loco_nav): Target Rescue robot using Dubins maneuvers. Project for Robot Planning and its application course
     - [internship](https://github.com/Nathanoj02/internship-multi-gpu): Code for internship on multi-GPU algorithms
